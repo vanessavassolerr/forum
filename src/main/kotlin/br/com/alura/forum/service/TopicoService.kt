@@ -1,5 +1,6 @@
 package br.com.alura.forum.service
 
+import br.com.alura.forum.mapper.form.AtualizacaoTopicoForm
 import br.com.alura.forum.mapper.form.NovoTopicoForm
 import br.com.alura.forum.mapper.view.TopicoView
 import br.com.alura.forum.mapper.form.TopicoFormMapper
@@ -52,5 +53,23 @@ class TopicoService(
             }.findFirst().orElseThrow {
                 throw NotFoundException("Tópico com ID $id não encontrado")
             }
+    }
+
+    fun atualizarTopico(form: AtualizacaoTopicoForm) {
+        val topico = topicos.stream().filter {
+                topico ->
+            topico.id == form.id
+        }.findFirst().get()
+        topicos = topicos.minus(topico).plus(Topico(
+            id = form.id,
+            titulo = form.titulo,
+            mensagem = form.mensagem,
+            autor = topico.autor,
+            curso = topico.curso,
+            respostas = topico.respostas,
+            status = topico.status,
+            dataCriacao = topico.dataCriacao
+        )).toMutableList()
+
     }
 }
