@@ -1,6 +1,5 @@
 package br.com.alura.forum.mapper.form
 
-import br.com.alura.forum.dto.NovaRespostaForm
 import br.com.alura.forum.mapper.Mapper
 import br.com.alura.forum.model.Resposta
 import br.com.alura.forum.service.TopicoService

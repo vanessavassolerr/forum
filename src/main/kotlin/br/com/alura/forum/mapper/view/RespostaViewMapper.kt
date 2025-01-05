@@ -1,6 +1,6 @@
-package br.com.alura.forum.mapper
+package br.com.alura.forum.mapper.view
 
-import br.com.alura.forum.mapper.view.RespostaView
+import br.com.alura.forum.mapper.Mapper
 import br.com.alura.forum.model.Resposta
 import org.springframework.stereotype.Component
 

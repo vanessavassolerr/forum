@@ -1,4 +1,4 @@
-package br.com.alura.forum.dto
+package br.com.alura.forum.mapper.form
 
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.Size

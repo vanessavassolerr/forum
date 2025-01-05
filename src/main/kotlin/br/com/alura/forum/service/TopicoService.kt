@@ -1,12 +1,11 @@
 package br.com.alura.forum.service
 
-import br.com.alura.forum.dto.NovoTopicoForm
-import br.com.alura.forum.dto.TopicoView
+import br.com.alura.forum.mapper.form.NovoTopicoForm
+import br.com.alura.forum.mapper.view.TopicoView
 import br.com.alura.forum.mapper.form.TopicoFormMapper
 import br.com.alura.forum.mapper.view.TopicoViewMapper
 import br.com.alura.forum.model.Topico
 import org.springframework.stereotype.Service
-import java.util.*
 import java.util.stream.Collectors
 
 @Service
@@ -40,7 +39,7 @@ class TopicoService(
     // Recebe um objeto do tipo NovoTopicoForm que representa os dados enviados pelo usuario ao criar um novo topico
     // Retorna um objeto TopicoView que é a representacao de um topico cadastrado que vai ser devolvido na resposta da API
     fun cadastrarTopico(form: NovoTopicoForm): TopicoView {
-        val topico = topicoFormMapper.map(form) // convrte o objeto que veio do form em um objeto do definido pelo DTO
+        val topico = topicoFormMapper.map(form) // converte o objeto que veio do form em um objeto do definido pelo DTO
         topico.id = topicos.size.toLong() + 1 // cria um id para o topico que esta sendo cadastrado
         topicos.add(topico) // adiciona o topico na lista de topicos
         return topicoViewMapper.map(topico) // converte o objeto recem criado em um objeto topicoview

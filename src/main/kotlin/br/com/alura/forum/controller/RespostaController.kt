@@ -1,6 +1,6 @@
 package br.com.alura.forum.controller
 
-import br.com.alura.forum.dto.NovaRespostaForm
+import br.com.alura.forum.mapper.form.NovaRespostaForm
 import br.com.alura.forum.model.Resposta
 import br.com.alura.forum.service.RespostaService
 import jakarta.validation.Valid

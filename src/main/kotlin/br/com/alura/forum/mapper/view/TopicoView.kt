@@ -1,4 +1,4 @@
-package br.com.alura.forum.dto
+package br.com.alura.forum.mapper.view
 
 import br.com.alura.forum.model.StatusTopico
 import java.time.LocalDateTime

@@ -1,7 +1,7 @@
 package br.com.alura.forum.controller
 
-import br.com.alura.forum.dto.NovoTopicoForm
-import br.com.alura.forum.dto.TopicoView
+import br.com.alura.forum.mapper.form.NovoTopicoForm
+import br.com.alura.forum.mapper.view.TopicoView
 import br.com.alura.forum.service.TopicoService
 import jakarta.validation.Valid
 import org.springframework.web.bind.annotation.GetMapping

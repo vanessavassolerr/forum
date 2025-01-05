@@ -1,8 +1,8 @@
 package br.com.alura.forum.service
 
 
-import br.com.alura.forum.dto.NovaRespostaForm
-import br.com.alura.forum.mapper.respostaViewMapper
+import br.com.alura.forum.mapper.form.NovaRespostaForm
+import br.com.alura.forum.mapper.view.respostaViewMapper
 import br.com.alura.forum.mapper.form.RespostaFormMapper
 import br.com.alura.forum.model.Resposta
 import org.springframework.stereotype.Service
