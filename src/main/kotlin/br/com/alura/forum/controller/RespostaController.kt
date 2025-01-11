@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@RequestMapping("/topicos/{id}/respostas")
+@RequestMapping("/topicos/{idTopico}/respostas")
 class RespostaController(
     private val service: RespostaService) {
 
     @GetMapping
-    fun consultarRespostas(@PathVariable id: Long): List<Resposta> {
-        return this.service.consultarRespostas(id)
+    fun consultarRespostas(@PathVariable idTopico: Long): List<Resposta> {
+        return this.service.consultarRespostas(idTopico)
     }
 
     @PostMapping
-    fun cadastrarResposta(@PathVariable id: Long, @RequestBody @Valid form: NovaRespostaForm) {
-        service.cadastrarResposta(id, form)
+    fun cadastrarResposta(@PathVariable idTopico: Long, @RequestBody @Valid form: NovaRespostaForm) {
+        service.cadastrarResposta(idTopico, form)
     }
 
 }
