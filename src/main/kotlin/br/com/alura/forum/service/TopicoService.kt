@@ -1,5 +1,6 @@
 package br.com.alura.forum.service
 
+import br.com.alura.forum.exception.NotFoundException
 import br.com.alura.forum.mapper.form.AtualizacaoTopicoForm
 import br.com.alura.forum.mapper.form.NovoTopicoForm
 import br.com.alura.forum.mapper.form.TopicoFormMapper
@@ -8,12 +9,14 @@ import br.com.alura.forum.mapper.view.TopicoViewMapper
 import br.com.alura.forum.model.Topico
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
+import br.com.alura.forum.mapper.ErrorView
 
 @Service
 class TopicoService(
     private var topicos: MutableList<Topico> = mutableListOf(),
     private val topicoViewMapper: TopicoViewMapper,
-    private val topicoFormMapper: TopicoFormMapper
+    private val topicoFormMapper: TopicoFormMapper,
+    private val notFoundMessage: String = "Tópico não encontrado"
 ) {
 
 
@@ -50,8 +53,7 @@ class TopicoService(
         return topicos.stream()
             .filter { topico ->
                 topico.id == id
-            }.findFirst().orElseThrow {
-                throw NotFoundException("Tópico com ID $id não encontrado")
+            }.findFirst().orElseThrow{ NotFoundException(notFoundMessage)
             }
     }
 
@@ -79,7 +81,7 @@ class TopicoService(
         val topico = topicos.stream().filter {
                 topico ->
             topico.id == id
-        }.findFirst().get()
+        }.findFirst().orElseThrow{ NotFoundException(notFoundMessage) }
         topicos = topicos.minus(topico).toMutableList()
     }
 
