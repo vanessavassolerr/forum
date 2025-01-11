@@ -13,7 +13,7 @@ class respostaViewMapper: Mapper<Resposta, RespostaView> { //implementa a interf
         return RespostaView(
             id = r.id,
             mensagem = r.mensagem,
-            data= r.data,
+            data = r.data,
             autor = r.autor,
             topico = r.topico,
             solucao = r.solucao
