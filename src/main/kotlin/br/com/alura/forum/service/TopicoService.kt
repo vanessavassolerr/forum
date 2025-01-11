@@ -2,8 +2,8 @@ package br.com.alura.forum.service
 
 import br.com.alura.forum.mapper.form.AtualizacaoTopicoForm
 import br.com.alura.forum.mapper.form.NovoTopicoForm
-import br.com.alura.forum.mapper.view.TopicoView
 import br.com.alura.forum.mapper.form.TopicoFormMapper
+import br.com.alura.forum.mapper.view.TopicoView
 import br.com.alura.forum.mapper.view.TopicoViewMapper
 import br.com.alura.forum.model.Topico
 import org.springframework.stereotype.Service
@@ -55,12 +55,12 @@ class TopicoService(
             }
     }
 
-    fun atualizarTopico(form: AtualizacaoTopicoForm) {
+    fun atualizarTopico(form: AtualizacaoTopicoForm): TopicoView {
         val topico = topicos.stream().filter {
                 topico ->
             topico.id == form.id
         }.findFirst().get()
-        topicos = topicos.minus(topico).plus(Topico(
+        val topicoAtualizado = Topico(
             id = form.id,
             titulo = form.titulo,
             mensagem = form.mensagem,
@@ -69,7 +69,18 @@ class TopicoService(
             respostas = topico.respostas,
             status = topico.status,
             dataCriacao = topico.dataCriacao
-        )).toMutableList()
+        )
+        topicos = topicos.minus(topico).plus(topicoAtualizado).toMutableList()
+        return topicoViewMapper.map(topicoAtualizado)
 
     }
+
+    fun deletarTopico(id: Long) {
+        val topico = topicos.stream().filter {
+                topico ->
+            topico.id == id
+        }.findFirst().get()
+        topicos = topicos.minus(topico).toMutableList()
+    }
+
 }
